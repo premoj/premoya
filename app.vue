@@ -60,6 +60,7 @@
                 <div class="mt-5 flex-1 h-0 overflow-y-auto">
                   <nav class="px-2 space-y-1">
                     <NuxtLink
+                      @click="selectOption(item)"
                       v-for="item in navigation"
                       :key="item.name"
                       :to="item.path"
@@ -116,11 +117,7 @@
       </div>
       <div class="md:pl-64 flex flex-col flex-1">
         <div class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow">
-          <button
-            type="button"
-            class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden"
-            @click="sidebarOpen = true"
-          >
+          <button type="button" class="px-4 border-r border-gray-200 text-gray-500 md:hidden" @click="sidebarOpen = true">
             <span class="sr-only">Open sidebar</span>
             <font-awesome-icon icon="fa-solid fa-bars" />
           </button>
@@ -207,6 +204,7 @@ const selectOption = item => {
   navigation.forEach(item => {
     item.current = false
   })
+  sidebarOpen.value = false
   item.current = true
 }
 const navigation = reactive([
