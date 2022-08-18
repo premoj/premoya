@@ -90,7 +90,7 @@
       <!-- Static sidebar for desktop -->
       <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
         <!-- Sidebar component, swap this element with another sidebar if you like -->
-        <div class="flex flex-col flex-grow border-r border-gray-200 pt-5 bg-white overflow-y-auto">
+        <div class="flex flex-col flex-grow my-shadow pt-5 bg-white overflow-y-auto">
           <div class="flex items-center flex-shrink-0 px-4">
             <img class="h-8 w-auto" :src="logo" alt="Workflow" />
           </div>
@@ -116,8 +116,8 @@
         </div>
       </div>
       <div class="md:pl-64 flex flex-col flex-1">
-        <div class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow">
-          <button type="button" class="px-4 border-r border-gray-200 text-gray-500 md:hidden" @click="sidebarOpen = true">
+        <div class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white my-shadow">
+          <button type="button" class="px-4 border-gray-200 text-gray-500 md:hidden" @click="sidebarOpen = true">
             <span class="sr-only">Open sidebar</span>
             <font-awesome-icon icon="fa-solid fa-bars" />
           </button>
@@ -142,7 +142,7 @@
             <div class="ml-4 flex items-center md:ml-6">
               <button
                 type="button"
-                class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
               >
                 <span class="sr-only">View notifications</span>
                 <BellIcon class="h-6 w-6" aria-hidden="true" />
@@ -152,7 +152,7 @@
               <Menu as="div" class="ml-3 relative">
                 <div>
                   <MenuButton
-                    class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
                   >
                     <span class="sr-only">Open user menu</span>
                     <img
@@ -174,7 +174,9 @@
                     class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                   >
                     <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
-                      <a :href="item.href" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">{{ item.name }}</a>
+                      <NuxtLink :to="item.path">
+                        <a :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm cursor-pointer text-gray-700']">{{ item.name }}</a>
+                      </NuxtLink>
                     </MenuItem>
                   </MenuItems>
                 </transition>
@@ -216,7 +218,7 @@ const navigation = reactive([
   { name: "Contacts", icon: "fa-user-secret", path: "/contacts" },
 ])
 const userNavigation = [
-  { name: "Your Profile", href: "#" },
+  { name: "Your Profile", path: "/profile" },
   { name: "Settings", href: "#" },
   { name: "Sign out", href: "#" },
 ]
@@ -236,6 +238,10 @@ onMounted(() => {
 </script>
 
 <style lang="css">
+.my-shadow {
+  box-shadow: 3px 3px 4px -3px gray;
+}
+
 #app {
   @apply min-h-screen font-sans;
 }

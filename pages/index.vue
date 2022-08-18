@@ -1,6 +1,5 @@
 <template>
-  <LayoutMain>
-    <AppButton @click="fetch">Fetch</AppButton>
+  <!--  <AppButton @click="fetch">Fetch</AppButton>
 
     <h1>{{ $t("hello") }}</h1>
 
@@ -12,13 +11,13 @@
         <o-icon icon="upload"></o-icon>
         <span>Click to upload</span>
       </o-button>
-    </o-upload>
-  </LayoutMain>
+    </o-upload> -->
 </template>
 
 <script setup lang="ts">
 import { defineComponent, computed, onMounted, ref } from "vue"
 import axios from "axios"
+import background from "~/images/background.jpg"
 
 const file = ref(null)
 const path = ref(null)
