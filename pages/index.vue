@@ -2,6 +2,8 @@
   <LayoutMain>
     <AppButton @click="fetch">Fetch</AppButton>
 
+    <h1>{{ $t("hello") }}</h1>
+
     <AppButton @click="update">Update</AppButton>
     <AppButton @click="deletePost">delete</AppButton>
     <img :src="path" />
@@ -15,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent, computed, onMounted } from "vue"
+import { defineComponent, computed, onMounted, ref } from "vue"
 import axios from "axios"
 
 const file = ref(null)

@@ -8,7 +8,7 @@
       hoverEffect,
       { shadow: type === ButtonType.BACKGROUND },
       { 'min-h-[36px]': !isLarge },
-      { 'py-2 px-6 text-base font-semibold tracking-normal min-h-[40px]': isLarge },
+      { 'py-2 px-6 text-baě font-semibold tracking-normal min-h-[40px]': isLarge },
     ]"
     class="bg-gradient-to-r transition hover:brightness-125 min-w-[125px] inline-flex focus:ring-teal-700 disabled:opacity-60 disabled:brightness-100 tracking-tight items-center justify-center px-4 py-2 text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2"
     :disabled="loading"
@@ -86,7 +86,7 @@ const backgroundEffect = computed(() => {
           return "from-red-700 to-red-900"
 
         default:
-          return "from-teal-600 to-teal-900"
+          return "bg-black"
       }
   }
 })

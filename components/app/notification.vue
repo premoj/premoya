@@ -16,9 +16,9 @@
         <div
           v-if="show"
           :class="[
-            props.notification.variant === Variant.SUCCESS && 'bg-gradient-to-r to-green-900 from-green-600',
+            props.notification.variant === Variant.SUCCESS && 'bg-black',
             props.notification.variant === Variant.ERROR && 'bg-gradient-to-r to-red-900 from-red-600',
-            props.notification.variant === Variant.LOADING && 'bg-gradient-to-r from-indigo-900 to-indigo-930',
+            props.notification.variant === Variant.LOADING && 'bg-black',
           ]"
           class="max-w-sm w-full shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden"
         >
@@ -102,9 +102,9 @@
               <div v-if="notification.closable" class="ml-4 flex-shrink-0 flex">
                 <button type="button" @click="close()" class="rounded-md inline-flex text-white transition ease-in-out hover:text-gray-500">
                   <span class="sr-only">Close</span>
-                  <FontAwesomeIcon
-                    :icon="['far', 'xmark']"
-                    class="ml-1 flex items-center justify-center h-5 w-5 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-950"
+                  <font-awesome-icon
+                    icon="fa-solid fa-xmark"
+                    class="ml-1 flex items-center text-white justify-center h-5 w-5 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-950"
                   />
                 </button>
               </div>

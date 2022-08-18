@@ -6,7 +6,7 @@ export default defineNuxtConfig({
 
   modules: ["@nuxtjs/tailwindcss", "@formkit/nuxt"],
 
-  css: ["@/styles/swv.css", "@/styles/form.css", "@/styles/style.css", "@/styles/oruga.css"],
+  css: ["@/styles/swv.css", "@/styles/form.css", "@/styles/style.css", "@/styles/oruga.css", "@fortawesome/fontawesome-svg-core/styles.css"],
   colorMode: {
     preference: "system", // default value of $colorMode.preference
     fallback: "light", // fallback value if not system preference found
