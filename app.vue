@@ -173,10 +173,8 @@
                   <MenuItems
                     class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                   >
-                    <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
-                      <NuxtLink :to="item.path">
-                        <a :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm cursor-pointer text-gray-700']">{{ item.name }}</a>
-                      </NuxtLink>
+                    <MenuItem @click="$router.push(item.path)" v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
+                      <a :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm cursor-pointer text-gray-700']">{{ item.name }}</a>
                     </MenuItem>
                   </MenuItems>
                 </transition>
