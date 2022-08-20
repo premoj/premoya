@@ -3,13 +3,7 @@
     <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
       <div class="mx-auto w-full max-w-sm lg:w-96">
         <div>
-          <img class="h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-teal-700.svg" alt="Workflow" />
           <h2 class="mt-6 text-3xl font-extrabold text-gray-900 dark:text-white">Sign in to your account</h2>
-          <p class="mt-2 text-sm text-gray-600">
-            Or
-            {{ " " }}
-            <a href="#" class="font-medium text-teal-700 hover:text-teal-500"> start your 14-day free trial </a>
-          </p>
         </div>
 
         <div class="mt-8">
@@ -37,30 +31,20 @@
           <div class="mt-6">
             <form action="#" method="POST" class="space-y-6">
               <div>
-                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-200"> Email address </label>
                 <div class="mt-1">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autocomplete="email"
-                    required=""
-                    class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:ring-teal-500 focus:border-teal-500 sm:text-sm"
-                  />
+                  <FormKit type="email" label="Student email address" validation="required|email" validation-visibility="dirty" />
                 </div>
               </div>
 
               <div class="space-y-1">
-                <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-200"> Password </label>
                 <div class="mt-1">
-                  <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    autocomplete="current-password"
-                    required=""
-                    class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:ring-teal-500 focus:border-teal-500 sm:text-sm"
-                  />
+                  <FormKit type="password" name="password" label="Password" validation="required" validation-visibility="dirty" />
+                </div>
+              </div>
+
+              <div v-if="register" class="space-y-1">
+                <div class="mt-1">
+                  <FormKit type="password" name="passwordConfirm" label="Confirm password" validation="required" validation-visibility="dirty" />
                 </div>
               </div>
 
@@ -70,13 +54,18 @@
                   <label for="remember-me" class="ml-2 block text-sm text-gray-900 dark:text-gray-200"> Remember me </label>
                 </div>
 
-                <div class="text-sm">
+                <div v-if="!register" class="text-sm">
                   <a href="#" class="font-medium text-teal-700 hover:text-teal-500"> Forgot your password? </a>
                 </div>
               </div>
 
-              <div>
-                <AppButton @click="signUp"> Sign in </AppButton>
+              <div class="flex" v-if="register">
+                <AppButton class="mr-2" @click="signUp"> Sign up</AppButton>
+                <AppButton :type="ButtonType.BORDER" @click="register = !register"> Sign in </AppButton>
+              </div>
+              <div class="flex" v-else>
+                <AppButton class="mr-2" @click="signIn"> Sign in </AppButton>
+                <AppButton :type="ButtonType.BORDER" @click="register = !register"> Sign up</AppButton>
               </div>
             </form>
           </div>
@@ -95,15 +84,29 @@
 
 <script setup lang="ts">
 import axios from "axios"
-import { getMaxListeners } from "process"
-const signUp = async () => {
+import { ref } from "vue"
+import { useUserStore } from "@/store/user"
+import { ButtonVariant, ButtonType } from "~/types/Button.utils"
+
+const userStore = useUserStore()
+
+const register = ref(false)
+const signUp = () => {
   const data = {
     email: "chovpr@gmail.com",
     password: "testtest",
     firstname: "Prema",
     surname: "Ocas",
   }
-  const post = await axios.put("/auth/signup", data)
+  userStore.signUp(data)
+}
+
+const signIn = () => {
+  const data = {
+    email: "chovpr@gmail.com",
+    password: "testtest",
+  }
+  userStore.signIn(data)
 }
 </script>
 

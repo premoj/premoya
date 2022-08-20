@@ -151,16 +151,18 @@
               <!-- Profile dropdown -->
               <Menu as="div" class="ml-3 relative">
                 <div>
-                  <MenuButton
-                    class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
-                  >
+                  <MenuButton v-if="loggedIn" class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none">
                     <span class="sr-only">Open user menu</span>
+
                     <img
                       class="h-8 w-8 rounded-full"
                       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                       alt=""
                     />
                   </MenuButton>
+                  <NuxtLink v-else to="/auth">
+                    <font-awesome-icon class="text-xl hover:text-teal-900 transition-all text-black" icon="fa-regular fa-user" />
+                  </NuxtLink>
                 </div>
                 <transition
                   enter-active-class="transition ease-out duration-100"
@@ -223,6 +225,10 @@ const userNavigation = [
 
 const sidebarOpen = ref(false)
 
+const loggedIn = computed(() => {
+  return false
+})
+
 const currentRoute = useRoute()
 
 const router = useRouter()
@@ -236,10 +242,6 @@ onMounted(() => {
 </script>
 
 <style lang="css">
-.my-shadow {
-  box-shadow: 3px 3px 4px -3px gray;
-}
-
 #app {
   @apply min-h-screen font-sans;
 }
