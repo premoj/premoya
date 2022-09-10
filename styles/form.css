@@ -1,6 +1,6 @@
 .formkit-input {
   @apply py-2.5  appearance-none focus:ring-1 block w-full h-full pl-5 pr-20 sm:text-sm focus:outline-none focus:ring-teal-800 focus:border-teal-600 sm:text-sm
-                    border-gray-400 rounded-md;
+                    border-gray-400 rounded-lg;
 }
 
 .formkit-message {
@@ -12,11 +12,11 @@
 }
 
 [data-invalid] .formkit-input {
-  @apply border-red-500 border rounded-lg outline-none ring-0;
+  @apply border-red-500 border rounded-lg focus:outline-none focus:ring-red-500 focus:border-red-500;
 }
 
 .invalid .formkit-input {
-  @apply border-red-500 border rounded-lg outline-none ring-0 focus:ring-0;
+  @apply border-red-500 border rounded-lg focus:outline-none focus:ring-red-500 focus:border-red-500;
 }
 
 .search-outer {

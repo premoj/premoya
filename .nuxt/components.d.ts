@@ -2,6 +2,7 @@
 declare module 'vue' {
   export interface GlobalComponents {
     'AppButton': typeof import("../components/app/Button.vue")['default'],
+    'AppLanguageSelector': typeof import("../components/app/LanguageSelector.vue")['default'],
     'AppSpinner': typeof import("../components/app/Spinner.vue")['default'],
     'AppNotification': typeof import("../components/app/notification.vue")['default'],
     'NuxtWelcome': typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default'],
@@ -13,6 +14,7 @@ declare module 'vue' {
     'NuxtLoadingIndicator': typeof import("../node_modules/nuxt/dist/app/components/nuxt-loading-indicator")['default'],
     'ColorScheme': typeof import("../node_modules/@nuxtjs/color-mode/dist/runtime/component.vue3.vue")['default']
     'LazyAppButton': typeof import("../components/app/Button.vue")['default'],
+    'LazyAppLanguageSelector': typeof import("../components/app/LanguageSelector.vue")['default'],
     'LazyAppSpinner': typeof import("../components/app/Spinner.vue")['default'],
     'LazyAppNotification': typeof import("../components/app/notification.vue")['default'],
     'LazyNuxtWelcome': typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default'],
@@ -26,6 +28,7 @@ declare module 'vue' {
   }
 }
 export const AppButton: typeof import("../components/app/Button.vue")['default']
+export const AppLanguageSelector: typeof import("../components/app/LanguageSelector.vue")['default']
 export const AppSpinner: typeof import("../components/app/Spinner.vue")['default']
 export const AppNotification: typeof import("../components/app/notification.vue")['default']
 export const NuxtWelcome: typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
@@ -37,6 +40,7 @@ export const NuxtLink: typeof import("../node_modules/nuxt/dist/app/components/n
 export const NuxtLoadingIndicator: typeof import("../node_modules/nuxt/dist/app/components/nuxt-loading-indicator")['default']
 export const ColorScheme: typeof import("../node_modules/@nuxtjs/color-mode/dist/runtime/component.vue3.vue")['default']
 export const LazyAppButton: typeof import("../components/app/Button.vue")['default']
+export const LazyAppLanguageSelector: typeof import("../components/app/LanguageSelector.vue")['default']
 export const LazyAppSpinner: typeof import("../components/app/Spinner.vue")['default']
 export const LazyAppNotification: typeof import("../components/app/notification.vue")['default']
 export const LazyNuxtWelcome: typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']

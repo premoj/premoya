@@ -56,7 +56,7 @@ const fetch = async () => {
   const post = await axios.post("/feed/post", formData)
 
   const resp = await axios.get("/feed/posts")
-  path.value = "./images/" + "10.png"
+  path.value = "./assets/" + "10.png"
   console.log(path.value)
 }
 </script>

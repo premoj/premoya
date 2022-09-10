@@ -25,7 +25,7 @@ export default defineNuxtConfig({
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Courier+Prime&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap",
       },
     ],
     charset: "UTF-8",

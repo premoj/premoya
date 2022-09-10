@@ -45,7 +45,7 @@
                   <button
                     type="button"
                     @click="maximize()"
-                    class="rounded-md absolute left-0 bottom-0 inline-flex text-white transition ease-in-out hover:text-gray-500"
+                    class="rounded-lg absolute left-0 bottom-0 inline-flex text-white transition ease-in-out hover:text-gray-500"
                   >
                     <span class="sr-only">Show</span>
                     <FontAwesomeIcon
@@ -90,7 +90,7 @@
                   type="button"
                   @click="minimize()"
                   :class="notification.closable ? 'right-8' : 'right-0'"
-                  class="rounded-md absolute top-0.5 inline-flex text-white transition ease-in-out hover:text-gray-500"
+                  class="rounded-lg absolute top-0.5 inline-flex text-white transition ease-in-out hover:text-gray-500"
                 >
                   <span class="sr-only">Hide</span>
                   <FontAwesomeIcon
@@ -100,7 +100,7 @@
                 </button>
               </div>
               <div v-if="notification.closable" class="ml-4 flex-shrink-0 flex">
-                <button type="button" @click="close()" class="rounded-md inline-flex text-white transition ease-in-out hover:text-gray-500">
+                <button type="button" @click="close()" class="rounded-lg inline-flex text-white transition ease-in-out hover:text-gray-500">
                   <span class="sr-only">Close</span>
                   <font-awesome-icon
                     icon="fa-solid fa-xmark"

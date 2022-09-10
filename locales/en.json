@@ -1,4 +1,6 @@
 {
   "hello": "Bazdar, {name}!",
-  "language": "Language"
+  "language": "Language",
+  "Contacts": "Contacts",
+  "Sales": "Sales"
 }

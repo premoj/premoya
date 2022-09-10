@@ -1,5 +1,5 @@
 <template>
-  <div ref="client">
+  <div class="bg-white" ref="client">
     <div class="z-50 bottom-10 fixed -right-[350px] w-full md:w-auto md:min-w-[350px]">
       <transition-group name="list-complete">
         <div class="list-complete-item" v-for="notification in NM.notifications" :key="notification.id">
@@ -65,15 +65,13 @@
                       :key="item.name"
                       :to="item.path"
                       :class="[
-                        item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                        'group flex items-center px-2 py-2 text-base font-medium rounded-md',
+                        item.current
+                          ? 'bg-gradient-to-r from-teal-700 to-teal-900 text-white  hover:brightness-125 transition-all duration-500'
+                          : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                        'group navigation flex items-center px-3 py-3 text-base font-medium rounded-lg',
                       ]"
                     >
-                      <component
-                        :is="item.icon"
-                        :class="[item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500', 'mr-4 flex-shrink-0 h-6 w-6']"
-                        aria-hidden="true"
-                      />
+                      <font-awesome-icon class="mr-2" :icon="item.icon" />
                       {{ item.name }}
                     </NuxtLink>
                   </nav>
@@ -89,7 +87,6 @@
 
       <!-- Static sidebar for desktop -->
       <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-        <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div class="flex flex-col flex-grow my-shadow pt-5 bg-white overflow-y-auto">
           <div class="flex items-center flex-shrink-0 px-4">
             <img class="h-8 w-auto" :src="logo" alt="Workflow" />
@@ -103,13 +100,16 @@
                 v-for="item in navigation"
                 :key="item.name"
                 :class="[
-                  item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                  'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
+                  item.current
+                    ? 'bg-gradient-to-r  from-teal-700 to-teal-900 text-white hover:brightness-125 transition-all duration-500'
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                  'group flex navigation items-center px-3 py-3 text-sm font-medium rounded-lg',
                 ]"
               >
                 <font-awesome-icon class="mr-2" :icon="item.icon" />
+                <font-awesome-icon class="text-black" icon="fa-solid fa-xmark" />
 
-                {{ item.name }}
+                {{ $t(item.name) }}
               </NuxtLink>
             </nav>
           </div>
@@ -150,7 +150,7 @@
 
               <!-- Profile dropdown -->
               <Menu as="div" class="ml-3 relative">
-                <div>
+                <div class="flex items-center">
                   <MenuButton v-if="loggedIn" class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none">
                     <span class="sr-only">Open user menu</span>
 
@@ -160,9 +160,11 @@
                       alt=""
                     />
                   </MenuButton>
+
                   <NuxtLink v-else to="/auth">
                     <font-awesome-icon class="text-xl hover:text-teal-900 transition-all text-black" icon="fa-regular fa-user" />
                   </NuxtLink>
+                  <AppLanguageSelector class="ml-2" />
                 </div>
                 <transition
                   enter-active-class="transition ease-out duration-100"
@@ -173,9 +175,9 @@
                   leave-to-class="transform opacity-0 scale-95"
                 >
                   <MenuItems
-                    class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    class="origin-top-right absolute right-0 mt-2 w-48 rounded-lg shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                   >
-                    <MenuItem @click="$router.push(item.path)" v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
+                    <MenuItem @click="navigateUser(item)" v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
                       <a :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm cursor-pointer text-gray-700']">{{ item.name }}</a>
                     </MenuItem>
                   </MenuItems>
@@ -194,7 +196,7 @@
 </template>
 
 <script setup lang="ts">
-import logo from "@/images/logo.svg"
+import logo from "@/assets/logo.svg"
 import { onMounted, ref, reactive, watch } from "vue"
 import { Notification, Variant } from "~/types/Notification.types"
 import { NotificationManager } from "@/types/NotificationManager.types"
@@ -210,28 +212,37 @@ const selectOption = item => {
   item.current = true
 }
 const navigation = reactive([
-  { name: "Home", icon: "grid-2", path: "/", current: true },
-  { name: "Collections", icon: "rectangle-vertical-history", path: "/collections", current: false },
-  { name: "Sales", icon: "layer-plus", path: "/sales", current: false },
-  { name: "About", icon: "coin-vertical", path: "/about", current: false },
-  { name: "Events", icon: "arrows-repeat", path: "/events", current: false },
-  { name: "Contacts", icon: "fa-user-secret", path: "/contacts" },
+  { name: "Home", icon: "fa-user", path: "/", current: true },
+  { name: "Collections", icon: ["fa-regular", "fa-user"], path: "/collections", current: false },
+  { name: "Sales", icon: ["far", "fa-xmark"], path: "/sales", current: false },
+  { name: "About", iicon: ["fa-regular", "fa-user"], path: "/about", current: false },
+  { name: "Events", icon: ["fa-regular", "fa-user"], path: "/events", current: false },
+  { name: "Contacts", icon: ["fa-regular", "copy"], path: "/contacts", current: false },
+  { name: "Blog", icon: ["fa-regular", "copy"], path: "/blog", current: false },
 ])
+
 const userNavigation = [
   { name: "Your Profile", path: "/profile" },
-  { name: "Settings", href: "#" },
+  { name: "Payments", href: "#", path: "/payments" },
   { name: "Sign out", href: "#" },
 ]
+
+const router = useRouter()
 
 const sidebarOpen = ref(false)
 
 const loggedIn = computed(() => {
-  return false
+  return true
 })
 
-const currentRoute = useRoute()
+const navigateUser = item => {
+  if (item.name === "Sign out") {
+  }
 
-const router = useRouter()
+  router.push(item.path)
+}
+
+const currentRoute = useRoute()
 
 const client = ref(null)
 const NM = NotificationManager.getInstance()
@@ -244,5 +255,14 @@ onMounted(() => {
 <style lang="css">
 #app {
   @apply min-h-screen font-sans;
+}
+
+.navigation {
+  font-family: "Raleway";
+  font-weight: 600;
+}
+
+body {
+  background: white;
 }
 </style>

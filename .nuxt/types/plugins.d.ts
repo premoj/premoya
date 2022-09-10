@@ -16,6 +16,7 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/@nuxtjs/color-mode/dist/runtime/plugin.client").default> &
   InjectionType<typeof import("../dist.plugin.3ba86802").default> &
   InjectionType<typeof import("../../plugins/axios.client").default> &
+  InjectionType<typeof import("../../plugins/fbSdk.client").default> &
   InjectionType<typeof import("../../plugins/fontawesome.client").default> &
   InjectionType<typeof import("../../plugins/i18n.ciient").default> &
   InjectionType<typeof import("../../plugins/oruga.client").default>

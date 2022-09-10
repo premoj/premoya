@@ -2,8 +2,7 @@
 
 # macOS
 .DS_Store
-
-node_modules
+.node_modules
 *.log
 .nuxt
 nuxt.d.ts
@@ -12,3 +11,4 @@ nuxt.d.ts
 .output.zip
 .idea
 .vscode
+node_modules
