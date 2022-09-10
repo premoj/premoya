@@ -252,7 +252,7 @@ const selectOption = item => {
 const navigation = reactive([
   { name: "Home", icon: "fa-user", path: "/", current: true },
   { name: "Collections", icon: ["fa-solid", "fa-user"], path: "/collections", current: false },
-  { name: "Sales", icon: ["fa-solid", "fa-xmark"], path: "/sales", current: false },
+  { name: "Projects", icon: ["fa-solid", "fa-xmark"], path: "/projects", current: false },
   { name: "About", icon: ["fa-solid", "fa-user"], path: "/about", current: false },
   { name: "Events", icon: ["fa-solid", "fa-user"], path: "/events", current: false },
   { name: "Contacts", icon: ["fa-solid", "copy"], path: "/contacts", current: false },
