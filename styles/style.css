@@ -23,7 +23,7 @@ main#appMain:not(.withoutBg)::before {
 }
 
 #__nuxt .hyperlink {
-  @apply text-indigo-300 underline underline-offset-2;
+  @apply text-teal-700 underline underline-offset-2;
 }
 
 #__nuxt {
@@ -35,7 +35,7 @@ main#appMain:not(.withoutBg)::before {
   scrollbar-color: #001540 transparent;
 }
 
-/* Chrome, Edge, and Safari */
+/* Chrome, Edge, and Safasi */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
   height: 6px;

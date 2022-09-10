@@ -50,6 +50,7 @@
                       @click="sidebarOpen = false"
                     >
                       <span class="sr-only">Close sidebar</span>
+
                       <font-awesome-icon class="text-black" icon="fa-solid fa-xmark" />
                     </button>
                   </div>
@@ -107,7 +108,7 @@
                 ]"
               >
                 <font-awesome-icon class="mr-2" :icon="item.icon" />
-                <font-awesome-icon class="text-black" icon="fa-solid fa-xmark" />
+                <font-awesome-icon class="text-black" icon="fa-regular fa-xmark" />
 
                 {{ $t(item.name) }}
               </NuxtLink>
@@ -116,7 +117,7 @@
         </div>
       </div>
       <div class="md:pl-64 flex flex-col flex-1">
-        <div class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white my-shadow">
+        <div class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-gray-100 md:bg-white my-shadow">
           <button type="button" class="px-4 border-gray-200 text-gray-500 md:hidden" @click="sidebarOpen = true">
             <span class="sr-only">Open sidebar</span>
             <font-awesome-icon icon="fa-solid fa-bars" />
@@ -131,7 +132,7 @@
                   </div>
                   <input
                     id="search-field"
-                    class="block w-full h-full pl-8 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent sm:text-sm"
+                    class="block w-full bg-gray-100 md:bg-white h-full pl-8 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent sm:text-sm"
                     placeholder="Search"
                     type="search"
                     name="search"
@@ -140,14 +141,6 @@
               </form>
             </div>
             <div class="ml-4 flex items-center md:ml-6">
-              <button
-                type="button"
-                class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
-              >
-                <span class="sr-only">View notifications</span>
-                <BellIcon class="h-6 w-6" aria-hidden="true" />
-              </button>
-
               <!-- Profile dropdown -->
               <Menu as="div" class="ml-3 relative">
                 <div class="flex items-center">
@@ -162,7 +155,7 @@
                   </MenuButton>
 
                   <NuxtLink v-else to="/auth">
-                    <font-awesome-icon class="text-xl hover:text-teal-900 transition-all text-black" icon="fa-regular fa-user" />
+                    <font-awesome-icon class="text-xl hover:text-teal-900 transition-all text-black" icon="fa-solid fa-user" />
                   </NuxtLink>
                   <AppLanguageSelector class="ml-2" />
                 </div>
@@ -190,6 +183,51 @@
         <main class="flex-1">
           <NuxtPage />
         </main>
+        <div class="absolute bottom-0 text-center px-4 md:px-0 md:right-6 py-3">
+          <p class="text-xs text-gray-400">
+            Appaya created by Přemysl Chovaneček | © All right reserved 2022 |
+            <a class="hyperlink text-xs" href="https:///HL-Privacy.pdf" target="_blank">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div v-if="banner" class="fixed bottom-0 left-0 z-50 bg-gray-100 nav print:hidden">
+      <div class="z-50 flex justify-between w-screen h-auto p-4 lg:justify-between lg:flex" :class="cookie ? 'items-end' : 'items-center'">
+        <div>
+          <div class="text-left text-black md:mb-0 intro-font" :class="cookie ? 'lg:mb-2' : 'lg:mb-0'">Respektujeme vaše soukromí.</div>
+
+          <div v-show="!cookie" @click="cookie = true" class="text-left hyperlink text-sm underline cursor-pointer md:hidden">Více o cookies.</div>
+          <span v-show="!cookie" @click="cookie = true" class="hidden text-left text-sm hyperlink underline cursor-pointer md:block">Více o cookies.</span>
+          <br v-if="cookie" class="md:hidden" />
+          <p v-if="cookie" class="pb-2 text-sm text-left text-black cookie-more">
+            Webové stránky využívají v souladu se zákony soubory cookies společnosti Google, a to zejména k výkonnostním a analytickým účelům zmíněných třetích
+            stran.<br v-if="cookie" class="md:hidden" />
+            <br class="md:hidden" />
+            Polévkové okýnko s těmito daty nijak nepracuje a nemůže jejich zpracování zabránit. Pro správné fungování objednávek jsou současně nezbytné také
+            cookies související s nákupem zboží.
+          </p>
+
+          <!-- <p v-if="cookie" class="pb-2 text-sm cookie-more">
+            Pro odebrání cookies klikněte
+            <button class="cursor-pointer">zde.</button>
+          </p> -->
+        </div>
+
+        <div class="flex justify-end">
+          <AppButton
+            @click="cookieAllow()"
+            class="z-50 p-3 py-2 mr-2 text-black transition duration-500 ease-in-out transform shadow-sm outline-none cursor-pointer lobster intro-font hover:brightness-125"
+          >
+            Souhlasím
+          </AppButton>
+
+          <!-- <button
+            @click="cookieDisable()"
+            class="z-50 p-3 py-2 text-white transition duration-500 ease-in-out transform bg-gray-700 shadow-sm outline-none cursor-pointer intro-font hover:-translate-y-1 hover:scale-110"
+          >
+            Nesouhlasím
+          </button> -->
+        </div>
       </div>
     </div>
   </div>
@@ -213,12 +251,12 @@ const selectOption = item => {
 }
 const navigation = reactive([
   { name: "Home", icon: "fa-user", path: "/", current: true },
-  { name: "Collections", icon: ["fa-regular", "fa-user"], path: "/collections", current: false },
-  { name: "Sales", icon: ["far", "fa-xmark"], path: "/sales", current: false },
-  { name: "About", iicon: ["fa-regular", "fa-user"], path: "/about", current: false },
-  { name: "Events", icon: ["fa-regular", "fa-user"], path: "/events", current: false },
-  { name: "Contacts", icon: ["fa-regular", "copy"], path: "/contacts", current: false },
-  { name: "Blog", icon: ["fa-regular", "copy"], path: "/blog", current: false },
+  { name: "Collections", icon: ["fa-solid", "fa-user"], path: "/collections", current: false },
+  { name: "Sales", icon: ["fa-solid", "fa-xmark"], path: "/sales", current: false },
+  { name: "About", icon: ["fa-solid", "fa-user"], path: "/about", current: false },
+  { name: "Events", icon: ["fa-solid", "fa-user"], path: "/events", current: false },
+  { name: "Contacts", icon: ["fa-solid", "copy"], path: "/contacts", current: false },
+  { name: "Blog", icon: ["fa-solid", "copy"], path: "/blog", current: false },
 ])
 
 const userNavigation = [
@@ -244,12 +282,26 @@ const navigateUser = item => {
 
 const currentRoute = useRoute()
 
+const banner = ref(true)
+const cookie = ref(false)
+
 const client = ref(null)
 const NM = NotificationManager.getInstance()
 
 onMounted(() => {
   NM.create({ message: "test", variant: Variant.SUCCESS, title: "Ahoj", closable: true })
+
+  if (localStorage.consentCookies) {
+    banner.value = false
+  } else {
+    localStorage.clear()
+  }
 })
+
+const cookieAllow = () => {
+  localStorage.setItem("consentCookies", "true")
+  banner.value = false
+}
 </script>
 
 <style lang="css">

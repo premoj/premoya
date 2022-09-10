@@ -103,7 +103,7 @@
                 <button type="button" @click="close()" class="rounded-lg inline-flex text-white transition ease-in-out hover:text-gray-500">
                   <span class="sr-only">Close</span>
                   <font-awesome-icon
-                    icon="fa-solid fa-xmark"
+                    icon="fa-regular fa-xmark"
                     class="ml-1 flex items-center text-white justify-center h-5 w-5 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-950"
                   />
                 </button>

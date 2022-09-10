@@ -58,8 +58,25 @@
 
               <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                  <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-teal-700 focus:ring-teal-500 border-gray-300 rounded" />
-                  <label for="remember-me" class="ml-2 block text-sm text-gray-900 dark:text-gray-200"> Remember me </label>
+                  <Switch
+                    v-model="remember"
+                    :class="[
+                      remember ? 'bg-gradient-to-r from-teal-700 to-teal-900' : 'bg-gray-200',
+                      'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-teal-700 focus:ring-offset-2',
+                    ]"
+                  >
+                    <span class="sr-only">Remember me</span>
+                    <span
+                      aria-hidden="true"
+                      :class="[
+                        remember ? 'translate-x-5' : 'translate-x-0',
+                        'inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out',
+                      ]"
+                    />
+                  </Switch>
+                  <div class="ml-3">
+                    <p class="text-sm text-gray-500">Remember me</p>
+                  </div>
                 </div>
 
                 <div v-if="!register" class="text-sm">
@@ -95,8 +112,11 @@ import axios from "axios"
 import { ref, onMounted } from "vue"
 import { useUserStore } from "@/store/user"
 import { ButtonVariant, ButtonType } from "~/types/Button.utils"
+import { Switch } from "@headlessui/vue"
 
 const userStore = useUserStore()
+
+const remember = ref(false)
 
 onMounted(() => {
   /*  window.fbAsyncInit = function () {
