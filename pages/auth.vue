@@ -143,22 +143,22 @@ onMounted(() => {
 })
 
 const register = ref(false)
-const signUp = () => {
+const signUp = async () => {
   const data = {
     email: "chovpr@gmail.com",
-    password: "testtest",
+    password: "testtests",
     firstname: "Prema",
-    surname: "Ocas",
+    surname: "Chov",
   }
-  userStore.signUp(data)
+  await userStore.signUp(data)
 }
 
-const signIn = () => {
+const signIn = async () => {
   const data = {
     email: "chovpr@gmail.com",
-    password: "testtest",
+    password: "testtests",
   }
-  userStore.signIn(data)
+  await userStore.signIn(data)
 }
 </script>
 

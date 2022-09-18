@@ -10,14 +10,16 @@ export const useUserStore = defineStore({
   actions: {
     async signIn(data: any) {
       try {
-        const resp = await axios.put("/auth/signup", data)
-        this.lgogedIn = true
+        const resp = await axios.post(`${import.meta.env.VITE_API}/auth/login`, data)
+        this.loggedIn = true
+        console.log(resp)
       } catch (e: any) {
         console.log(e)
       }
     },
     async signUp(data: any) {
-      const resp = await axios.put("/auth/signup", data)
+      console.log(`${import.meta.env.VITE_API}/auth/signup`)
+      const resp = await axios.put(`${import.meta.env.VITE_API}/auth/signup`, data)
     },
   },
 })

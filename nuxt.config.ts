@@ -20,6 +20,7 @@ export default defineNuxtConfig({
 
   meta: {
     title: "Premoja",
+    script: [{ hid: "Stripe", src: "https://js.stripe.com/v3/", defer: true }],
     link: [
       { rel: "icon", href: "/favicon.ico" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },

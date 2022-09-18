@@ -22,12 +22,7 @@
             :value="lang.name"
             v-slot="{ active, selected }"
           >
-            <li
-              :class="[
-                active ? 'text-white bg-gradient-to-r from-teal-700 to-teal-900' : 'text-gray-900',
-                'relative cursor-pointer select-none py-2 pl-3 px-5',
-              ]"
-            >
+            <li :class="[active ? 'text-white bg-gradient-to-r from-teal-700 to-teal-900' : 'text-gray-900', 'relative cursor-pointer select-none py-2  px-5']">
               <div class="flex items-center justify-center">
                 <img :src="lang.img" alt="" class="h-6 w-6 flex-shrink-0 object-cover rounded-full" />
               </div>
