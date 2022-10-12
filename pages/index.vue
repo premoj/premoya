@@ -1,62 +1,17 @@
 <template>
-  <!--  <AppButton @click="fetch">Fetch</AppButton>
-
-    <h1>{{ $t("hello") }}</h1>
-
-    <AppButton @click="update">Update</AppButton>
-    <AppButton @click="deletePost">delete</AppButton>
-    <img :src="path" />
-    <o-upload v-model="file">
-      <o-button tag="a" variant="primary">
-        <o-icon icon="upload"></o-icon>
-        <span>Click to upload</span>
-      </o-button>
-    </o-upload> -->
+  <div class="text-center">
+    <span class="mt-1 tracking-tight bg-gradient-to-r bg-clip-text text-transparent font-bold text-4xl from-teal-500 to-teal-900 sm:text-5xl lg:text-6xl">
+      {{ $t("Home") }}
+    </span>
+    <p class="mx-auto mt-0 max-w-xl text-sm uppercase text-gray-500">
+      {{ $t("home.no") }}
+    </p>
+    <p class="mx-auto mt-5 max-w-xl text-xl text-gray-500">
+      {{ $t("home.entry") }}
+    </p>
+  </div>
 </template>
 
-<script setup lang="ts">
-import { defineComponent, computed, onMounted, ref } from "vue"
-import axios from "axios"
-import background from "~/images/background.jpg"
+<script setup lang="ts"></script>
 
-const file = ref(null)
-const path = ref(null)
-
-onMounted(async () => {
-  const resp = await axios.get("/feed/posts?page=1&perPage=2")
-  console.log(resp)
-})
-
-const deletePost = async () => {
-  axios.delete("/feed/post/62ee6ee022a038cc86d90efd")
-}
-
-const update = async () => {
-  const content = "This is the second post!"
-  const imageUrl = file.value
-
-  const formData = new FormData()
-  formData.append("file", imageUrl)
-  formData.append("title", "sracka")
-  formData.append("content", content)
-  const post = await axios.put("/feed/post/62ee6ee022a038cc86d90efd", formData)
-}
-
-const fetch = async () => {
-  const formData = new FormData()
-
-  const title = "Testa"
-  const content = "This is the second post!"
-  const imageUrl = file.value
-
-  formData.append("file", imageUrl)
-  formData.append("title", title)
-  formData.append("content", content)
-
-  const post = await axios.post("/feed/post", formData)
-
-  const resp = await axios.get("/feed/posts")
-  path.value = "./assets/" + "10.png"
-  console.log(path.value)
-}
-</script>
+<style></style>

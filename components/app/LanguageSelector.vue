@@ -1,7 +1,9 @@
 <template>
   <Listbox as="div" v-model="$i18n.locale">
     <div class="relative mt-1">
-      <ListboxButton class="relative w-full cursor-pointer bg-gray-100 md:bg-white flex rounded-md border-gray-300 bg-white py-2 text-center px-5 sm:text-sm">
+      <ListboxButton
+        class="relative w-full cursor-pointer bg-transparent md:bg-none md:bg-white flex rounded-md border-gray-300 bg-white py-2 text-center px-5 sm:text-sm"
+      >
         <span class="flex items-center">
           <img :src="getImage($i18n.locale)" alt="" class="h-8 w-8 rounded-full object-cover flex-shrink-0" />
         </span>
@@ -22,7 +24,12 @@
             :value="lang.name"
             v-slot="{ active, selected }"
           >
-            <li :class="[active ? 'text-white bg-gradient-to-r from-teal-700 to-teal-900' : 'text-gray-900', 'relative cursor-pointer select-none py-2  px-5']">
+            <li
+              :class="[
+                active ? 'text-white bg-gradient-to-r  from-cyan-500 via-pink-500 to-orange-200' : 'text-gray-900',
+                'relative cursor-pointer select-none py-2  px-5',
+              ]"
+            >
               <div class="flex items-center justify-center">
                 <img :src="lang.img" alt="" class="h-6 w-6 flex-shrink-0 object-cover rounded-full" />
               </div>

@@ -11,15 +11,15 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/nuxt/dist/head/runtime/plugin").default> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/pages/runtime/router").default> &
   InjectionType<typeof import("../formkitPlugin").default> &
-  InjectionType<typeof import("../color-mode-script").default> &
   InjectionType<typeof import("../../node_modules/@nuxtjs/color-mode/dist/runtime/plugin.server").default> &
   InjectionType<typeof import("../../node_modules/@nuxtjs/color-mode/dist/runtime/plugin.client").default> &
-  InjectionType<typeof import("../dist.plugin.3ba86802").default> &
+  InjectionType<typeof import("../dist.plugin.ab04355e").default> &
   InjectionType<typeof import("../../plugins/axios.client").default> &
   InjectionType<typeof import("../../plugins/fbSdk.client").default> &
   InjectionType<typeof import("../../plugins/fontawesome.client").default> &
   InjectionType<typeof import("../../plugins/i18n.ciient").default> &
-  InjectionType<typeof import("../../plugins/oruga.client").default>
+  InjectionType<typeof import("../../plugins/oruga.client").default> &
+  InjectionType<typeof import("../../plugins/video.client").default>
 
 declare module '#app' {
   interface NuxtApp extends NuxtAppInjections { }

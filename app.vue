@@ -1,13 +1,5 @@
 <template>
   <div class="bg-white" ref="client">
-    <div class="z-50 bottom-10 fixed -right-[350px] w-full md:w-auto md:min-w-[350px]">
-      <transition-group name="list-complete">
-        <div class="list-complete-item" v-for="notification in NM.notifications" :key="notification.id">
-          <AppNotification :width="client.clientWidth" :notification="notification" />
-        </div>
-      </transition-group>
-    </div>
-
     <div>
       <TransitionRoot as="template" :show="sidebarOpen">
         <Dialog as="div" class="relative z-40 md:hidden" @close="sidebarOpen = false">
@@ -43,20 +35,22 @@
                   leave-from="opacity-100"
                   leave-to="opacity-0"
                 >
-                  <div class="absolute top-0 right-0 pt-2">
-                    <button
-                      type="button"
-                      class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-                      @click="sidebarOpen = false"
-                    >
+                  <div class="absolute right-0">
+                    <button type="button" class="ml-1 flex items-center justify-center h-10 w-10 rounded-full" @click="sidebarOpen = false">
                       <span class="sr-only">Close sidebar</span>
 
-                      <font-awesome-icon class="text-black" icon="fa-solid fa-xmark" />
+                      <font-awesome-icon size="xl" class="text-black pt-2" icon="fa-solid fa-xmark" />
                     </button>
                   </div>
                 </TransitionChild>
                 <div class="flex-shrink-0 flex items-center px-4">
-                  <img class="h-8 w-auto" :src="logo" alt="Workflow" />
+                  <!--                   <img class="h-8 w-auto" :src="logo" alt="Workflow" /> -->
+
+                  <p
+                    class="bg-clip-text align-middle m-0 p-0 hover:brightness-125 text-transparent transition-all duration-500 bg-gradient-to-r font-bold text-4xl from-cyan-500 via-pink-500 to-orange-200"
+                  >
+                    premoy
+                  </p>
                 </div>
                 <div class="mt-5 flex-1 h-0 overflow-y-auto">
                   <nav class="px-2 space-y-1">
@@ -67,13 +61,13 @@
                       :to="item.path"
                       :class="[
                         item.current
-                          ? 'bg-gradient-to-r from-teal-700 to-teal-900 text-white  hover:brightness-125 transition-all duration-500'
+                          ? 'bg-gradient-to-r  from-cyan-500 via-pink-500  to-orange-200 text-white  hover:brightness-125 transition-all duration-500'
                           : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
                         'group navigation flex items-center px-3 py-3 text-base font-medium rounded-lg',
                       ]"
                     >
                       <font-awesome-icon class="mr-2" :icon="item.icon" />
-                      {{ item.name }}
+                      {{ $t(item.name) }}
                     </NuxtLink>
                   </nav>
                 </div>
@@ -90,7 +84,13 @@
       <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
         <div class="flex flex-col flex-grow my-shadow pt-5 bg-white overflow-y-auto">
           <div class="flex items-center flex-shrink-0 px-4">
-            <img class="h-8 w-auto" :src="logo" alt="Workflow" />
+            <h2
+              class="bg-clip-text p-0 m-0 align-middle hover:brightness-125 text-transparent hover:scale-110 transition-all duration-500 bg-gradient-to-r font-bold text-4xl from-cyan-500 via-pink-500 to-orange-200"
+            >
+              premoya
+            </h2>
+
+            <!--  <img class="h-8 w-auto" :src="logo" alt="Workflow" /> -->
           </div>
           <div class="mt-5 flex-grow flex flex-col">
             <nav class="flex-1 px-2 pb-4 space-y-1">
@@ -102,13 +102,12 @@
                 :key="item.name"
                 :class="[
                   item.current
-                    ? 'bg-gradient-to-r  from-teal-700 to-teal-900 text-white hover:brightness-125 transition-all duration-500'
-                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                    ? 'bg-gradient-to-r   from-cyan-500 via-pink-500  to-orange-200 text-white hover:brightness-125 transition-all duration-500'
+                    : 'text-gray-600 hover:bg-gradient-to-r hover:brightness-125 transition-all duration-500  from-cyan-500 via-pink-500  to-orange-200 hover:text-gray-900',
                   'group flex navigation items-center px-3 py-3 text-sm font-medium rounded-lg',
                 ]"
               >
                 <font-awesome-icon class="mr-2" :icon="item.icon" />
-                <font-awesome-icon class="text-black" icon="fa-regular fa-xmark" />
 
                 {{ $t(item.name) }}
               </NuxtLink>
@@ -117,46 +116,18 @@
         </div>
       </div>
       <div class="md:pl-64 flex flex-col flex-1">
-        <div class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-gray-100 md:bg-white my-shadow">
-          <button type="button" class="px-4 border-gray-200 text-gray-500 md:hidden" @click="sidebarOpen = true">
+        <div
+          class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-gradient-to-r md:bg-none from-cyan-500 via-pink-500 to-orange-200 justify-between md:bg-white my-shadow"
+        >
+          <button type="button" class="px-4 ml-4 border-gray-200 text-gray-500 md:hidden" @click="sidebarOpen = true">
             <span class="sr-only">Open sidebar</span>
-            <font-awesome-icon icon="fa-solid fa-bars" />
+            <font-awesome-icon size="xl" class="text-black" icon="fa-solid  fa-bars" />
           </button>
-          <div class="flex-1 px-4 flex justify-between">
-            <div class="flex-1 flex">
-              <form class="w-full flex md:ml-0" action="#" method="GET">
-                <label for="search-field" class="sr-only">Search</label>
-                <div class="relative w-full text-gray-400 focus-within:text-gray-600">
-                  <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
-                    <SearchIcon class="h-5 w-5" aria-hidden="true" />
-                  </div>
-                  <input
-                    id="search-field"
-                    class="block w-full bg-gray-100 md:bg-white h-full pl-8 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent sm:text-sm"
-                    placeholder="Search"
-                    type="search"
-                    name="search"
-                  />
-                </div>
-              </form>
-            </div>
-            <div class="ml-4 flex items-center md:ml-6">
+          <div class="flex-1 px-4 flex w-full justify-end">
+            <div class="ml-4 flex items-center justify-between md:ml-6">
               <!-- Profile dropdown -->
               <Menu as="div" class="ml-3 relative">
                 <div class="flex items-center">
-                  <MenuButton v-if="loggedIn" class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none">
-                    <span class="sr-only">Open user menu</span>
-
-                    <img
-                      class="h-8 w-8 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
-                    />
-                  </MenuButton>
-
-                  <NuxtLink v-else to="/auth">
-                    <font-awesome-icon class="text-xl hover:text-teal-900 transition-all text-black" icon="fa-solid fa-user" />
-                  </NuxtLink>
                   <AppLanguageSelector class="ml-2" />
                 </div>
                 <transition
@@ -171,7 +142,7 @@
                     class="origin-top-right absolute right-0 mt-2 w-48 rounded-lg shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                   >
                     <MenuItem @click="navigateUser(item)" v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
-                      <a :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm cursor-pointer text-gray-700']">{{ item.name }}</a>
+                      <a :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm cursor-pointer text-gray-700']"> {{ $t(item.name) }}</a>
                     </MenuItem>
                   </MenuItems>
                 </transition>
@@ -180,14 +151,11 @@
           </div>
         </div>
 
-        <main class="flex-1">
+        <main class="flex-1 p-5">
           <NuxtPage />
         </main>
-        <div class="absolute bottom-0 text-center px-4 md:px-0 md:right-6 py-3">
-          <p class="text-xs text-gray-400">
-            Appaya created by Přemysl Chovaneček | © All right reserved 2022 |
-            <a class="hyperlink text-xs" href="https:///HL-Privacy.pdf" target="_blank">Privacy Policy</a>
-          </p>
+        <div class="absolute bottom-0 w-full md:w-auto text-center px-4 md:px-0 md:right-6 py-3">
+          <p class="text-xs text-gray-400 text-center md:text-left">Created by Přemysl Chovaneček | © All right reserved 2022</p>
         </div>
       </div>
     </div>
@@ -198,14 +166,6 @@
 
           <div v-show="!cookie" @click="cookie = true" class="text-left hyperlink text-sm underline cursor-pointer md:hidden">Více o cookies.</div>
           <span v-show="!cookie" @click="cookie = true" class="hidden text-left text-sm hyperlink underline cursor-pointer md:block">Více o cookies.</span>
-          <br v-if="cookie" class="md:hidden" />
-          <p v-if="cookie" class="pb-2 text-sm text-left text-black cookie-more">
-            Webové stránky využívají v souladu se zákony soubory cookies společnosti Google, a to zejména k výkonnostním a analytickým účelům zmíněných třetích
-            stran.<br v-if="cookie" class="md:hidden" />
-            <br class="md:hidden" />
-            Polévkové okýnko s těmito daty nijak nepracuje a nemůže jejich zpracování zabránit. Pro správné fungování objednávek jsou současně nezbytné také
-            cookies související s nákupem zboží.
-          </p>
 
           <!-- <p v-if="cookie" class="pb-2 text-sm cookie-more">
             Pro odebrání cookies klikněte
@@ -250,20 +210,16 @@ const selectOption = item => {
   item.current = true
 }
 const navigation = reactive([
-  { name: "Home", icon: "fa-user", path: "/", current: true },
-  { name: "Collections", icon: ["fa-solid", "fa-user"], path: "/collections", current: false },
-  { name: "Projects", icon: ["fa-solid", "fa-xmark"], path: "/projects", current: false },
-  { name: "About", icon: ["fa-solid", "fa-user"], path: "/about", current: false },
-  { name: "Events", icon: ["fa-solid", "fa-user"], path: "/events", current: false },
-  { name: "Contacts", icon: ["fa-solid", "copy"], path: "/contacts", current: false },
-  { name: "Blog", icon: ["fa-solid", "copy"], path: "/blog", current: false },
-])
+  { name: "Home", icon: "igloo", path: "/", current: true },
+  { name: "Bali", icon: "fa-earth-oceania", path: "/bali", current: false },
+  { name: "India", icon: "fa-earth-asia", path: "/india", current: false },
+  { name: "Santiago", icon: "fa-earth-europe", path: "/santiago", current: false },
+  { name: "Projects", icon: "fa-laptop-code", path: "/projects", current: false },
 
-const userNavigation = [
-  { name: "Your Profile", path: "/profile" },
-  { name: "Payments", href: "#", path: "/payments" },
-  { name: "Sign out", href: "#" },
-]
+  /*  { name: "Projects", icon: ["fa-solid", "fa-xmark"], path: "/projects", current: false }, */
+  { name: "About", icon: ["fa-solid", "fa-user"], path: "/about", current: false },
+  /*  { name: "Blog", icon: ["fa-solid", "copy"], path: "/blog", current: false }, */
+])
 
 const router = useRouter()
 
@@ -289,7 +245,9 @@ const client = ref(null)
 const NM = NotificationManager.getInstance()
 
 onMounted(() => {
-  NM.create({ message: "test", variant: Variant.SUCCESS, title: "Ahoj", closable: true })
+  localStorage.setItem("page_view", "1")
+
+  //NM.create({ message: "test", variant: Variant.SUCCESS, title: "Ahoj", closable: true })
 
   if (localStorage.consentCookies) {
     banner.value = false

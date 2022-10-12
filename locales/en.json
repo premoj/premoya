@@ -1,6 +1,42 @@
 {
   "hello": "Bazdar, {name}!",
   "language": "Language",
-  "Contacts": "Contacts",
-  "Sales": "Sales"
+  "About": "About",
+  "Sales": "Sales",
+  "Bali": "Bali",
+  "Home": "Home",
+  "India": "India",
+  "Santiago": "Santiago de Compostela",
+  "Go back home": "Go back home",
+  "Lost": "Uh oh! I think you’re lost.",
+  "LostDescription": "It looks like the page you’re looking for doesn't exist.",
+  "First": "Post no.1",
+  "Second": "Post no.2",
+  "Third": "Post no.3",
+  "home": {
+    "entry": "I hope that one day this site will be useful.",
+    "no": "Just occasionally!"
+  },
+  "india": {
+    "entry": "hopefully later"
+  },
+  "bali": {
+    "entry": "I hope that one day this site will be useful.",
+
+    "second": "I'll fill it in if someone asks.",
+    "third": "I'll fill it in if someone asks.",
+    "fourth": "I'll fill it in if someone asks.",
+    "fifth": "I'll fill it in if someone asks.",
+    "sixth": "I'll fill it in if someone asks.",
+    "seventh": "I'll fill it in if someone asks.",
+    "eight": "I'll fill it in if someone asks.",
+    "nineth": "I'll fill it in if someone asks.",
+    "tenth": "I'll fill it in if someone asks."
+  },
+  "santiago": {
+    "entry": "hopefully later"
+  },
+  "about": {
+    "entry": "hopefully later"
+  }
 }

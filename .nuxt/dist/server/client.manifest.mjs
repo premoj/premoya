@@ -1,13 +1,15 @@
 export default {
-  "publicPath": "/_nuxt/",
-  "all": [
-    "@vite/client",
-    "entry.mjs"
-  ],
-  "initial": [
-    "@vite/client",
-    "entry.mjs"
-  ],
-  "async": [],
-  "modules": {}
+  "@vite/client": {
+    "isEntry": true,
+    "file": "@vite/client",
+    "css": [],
+    "module": true,
+    "resourceType": "script"
+  },
+  "/Users/premysl/Desktop/premoya/node_modules/nuxt/dist/app/entry.mjs": {
+    "resourceType": "script",
+    "module": true,
+    "isEntry": true,
+    "file": "/Users/premysl/Desktop/premoya/node_modules/nuxt/dist/app/entry.mjs"
+  }
 }
