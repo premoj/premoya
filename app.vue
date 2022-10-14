@@ -1,8 +1,10 @@
 <template>
   <div class="bg-white" ref="client">
+    <img class="md:block w-screen sticky -top-1 hidden z-20" src="@/assets/wave.svg" />
+    <div class="flex-1 z-[200] px-4 w-full md:hidden justify-end"></div>
     <div>
       <TransitionRoot as="template" :show="sidebarOpen">
-        <Dialog as="div" class="relative z-40 md:hidden" @close="sidebarOpen = false">
+        <Dialog as="div" class="relative z-[66] md:hidden" @close="sidebarOpen = false">
           <TransitionChild
             as="template"
             enter="transition-opacity ease-linear duration-300"
@@ -49,13 +51,13 @@
                   <p
                     class="bg-clip-text align-middle m-0 p-0 hover:brightness-125 text-transparent transition-all duration-500 bg-gradient-to-r font-bold text-4xl from-cyan-500 via-pink-500 to-orange-200"
                   >
-                    premoy
+                    premoj
                   </p>
                 </div>
                 <div class="mt-5 flex-1 h-0 overflow-y-auto">
                   <nav class="px-2 space-y-1">
                     <NuxtLink
-                      @click="selectOption(item)"
+                      @click.prevent="selectOption(item)"
                       v-for="item in navigation"
                       :key="item.name"
                       :to="item.path"
@@ -81,13 +83,13 @@
       </TransitionRoot>
 
       <!-- Static sidebar for desktop -->
-      <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
+      <div class="hidden z-[200] md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
         <div class="flex flex-col flex-grow my-shadow pt-5 bg-white overflow-y-auto">
           <div class="flex items-center flex-shrink-0 px-4">
             <h2
               class="bg-clip-text p-0 m-0 align-middle hover:brightness-125 text-transparent hover:scale-110 transition-all duration-500 bg-gradient-to-r font-bold text-4xl from-cyan-500 via-pink-500 to-orange-200"
             >
-              premoya
+              premoj
             </h2>
 
             <!--  <img class="h-8 w-auto" :src="logo" alt="Workflow" /> -->
@@ -97,7 +99,7 @@
               <NuxtLink
                 :to="item.path"
                 class="cursor-pointer"
-                @click="selectOption(item)"
+                @click.prevent="selectOption(item)"
                 v-for="item in navigation"
                 :key="item.name"
                 :class="[
@@ -116,39 +118,35 @@
         </div>
       </div>
       <div class="md:pl-64 flex flex-col flex-1">
-        <div
-          class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-gradient-to-r md:bg-none from-cyan-500 via-pink-500 to-orange-200 justify-between md:bg-white my-shadow"
-        >
-          <button type="button" class="px-4 ml-4 border-gray-200 text-gray-500 md:hidden" @click="sidebarOpen = true">
+        <div class="sticky top-0 flex-shrink-0 flex h-16 z-[20] bg-gradient-to-r md:bg-none justify-between md:bg-transparent my-shadow">
+          <img class="w-screen md:hidden absolute z-[100] top-0" src="@/assets/wave.svg" />
+          <button type="button" class="px-4 absolute top-3 ml-0 z-[100] border-gray-200 text-gray-500 md:hidden" @click.prevent="sidebarOpen = true">
             <span class="sr-only">Open sidebar</span>
-            <font-awesome-icon size="xl" class="text-black" icon="fa-solid  fa-bars" />
+            <font-awesome-icon size="xl" class="text-black z-[100]" icon="fa-solid  fa-bars" />
           </button>
-          <div class="flex-1 px-4 flex w-full justify-end">
-            <div class="ml-4 flex items-center justify-between md:ml-6">
-              <!-- Profile dropdown -->
-              <Menu as="div" class="ml-3 relative">
-                <div class="flex items-center">
-                  <AppLanguageSelector class="ml-2" />
-                </div>
-                <transition
-                  enter-active-class="transition ease-out duration-100"
-                  enter-from-class="transform opacity-0 scale-95"
-                  enter-to-class="transform opacity-100 scale-100"
-                  leave-active-class="transition ease-in duration-75"
-                  leave-from-class="transform opacity-100 scale-100"
-                  leave-to-class="transform opacity-0 scale-95"
-                >
-                  <MenuItems
-                    class="origin-top-right absolute right-0 mt-2 w-48 rounded-lg shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-                  >
-                    <MenuItem @click="navigateUser(item)" v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
-                      <a :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm cursor-pointer text-gray-700']"> {{ $t(item.name) }}</a>
-                    </MenuItem>
-                  </MenuItems>
-                </transition>
-              </Menu>
+
+          <!-- Profile dropdown -->
+          <Menu as="div" class="ml-3 z-[100] left-4 -top-0.5 absolute md:relative">
+            <div class="flex items-center">
+              <AppLanguageSelector class="ml-2 z-[100]" />
             </div>
-          </div>
+            <transition
+              enter-active-class="transition ease-out duration-100"
+              enter-from-class="transform opacity-0 scale-95"
+              enter-to-class="transform opacity-100 scale-100"
+              leave-active-class="transition ease-in duration-75"
+              leave-from-class="transform opacity-100 scale-100"
+              leave-to-class="transform opacity-0 scale-95"
+            >
+              <MenuItems
+                class="origin-top-right absolute right-0 mt-2 w-48 rounded-lg shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+              >
+                <MenuItem @click.prevent="navigateUser(item)" v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
+                  <a :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm cursor-pointer text-gray-700']"> {{ $t(item.name) }}</a>
+                </MenuItem>
+              </MenuItems>
+            </transition>
+          </Menu>
         </div>
 
         <main class="flex-1 p-5">
@@ -164,8 +162,10 @@
         <div>
           <div class="text-left text-black md:mb-0 intro-font" :class="cookie ? 'lg:mb-2' : 'lg:mb-0'">Respektujeme vaše soukromí.</div>
 
-          <div v-show="!cookie" @click="cookie = true" class="text-left hyperlink text-sm underline cursor-pointer md:hidden">Více o cookies.</div>
-          <span v-show="!cookie" @click="cookie = true" class="hidden text-left text-sm hyperlink underline cursor-pointer md:block">Více o cookies.</span>
+          <div v-show="!cookie" @click.prevent="cookie = true" class="text-left hyperlink text-sm underline cursor-pointer md:hidden">Více o cookies.</div>
+          <span v-show="!cookie" @click.prevent="cookie = true" class="hidden text-left text-sm hyperlink underline cursor-pointer md:block"
+            >Více o cookies.</span
+          >
 
           <!-- <p v-if="cookie" class="pb-2 text-sm cookie-more">
             Pro odebrání cookies klikněte
@@ -175,14 +175,14 @@
 
         <div class="flex justify-end">
           <AppButton
-            @click="cookieAllow()"
+            @click.prevent="cookieAllow()"
             class="z-50 p-3 py-2 mr-2 text-black transition duration-500 ease-in-out transform shadow-sm outline-none cursor-pointer lobster intro-font hover:brightness-125"
           >
             Souhlasím
           </AppButton>
 
           <!-- <button
-            @click="cookieDisable()"
+            @click.prevent="cookieDisable()"
             class="z-50 p-3 py-2 text-white transition duration-500 ease-in-out transform bg-gray-700 shadow-sm outline-none cursor-pointer intro-font hover:-translate-y-1 hover:scale-110"
           >
             Nesouhlasím
@@ -245,7 +245,15 @@ const client = ref(null)
 const NM = NotificationManager.getInstance()
 
 onMounted(() => {
-  localStorage.setItem("page_view", "1")
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault()
+
+      document.querySelector(this.getAttribute("href")).scrollIntoView({
+        behavior: "smooth",
+      })
+    })
+  })
 
   //NM.create({ message: "test", variant: Variant.SUCCESS, title: "Ahoj", closable: true })
 

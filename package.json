@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@aws-amplify/ui-vue": "^2.4.18",
+    "@cloudgeek/vue3-video-player": "^0.3.10",
     "@formkit/nuxt": "^1.0.0-beta.10",
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.2",

@@ -9,7 +9,7 @@
   "Home": "Domů",
   "Bali": "Bali",
   "bali": {
-    "entry": "Dostat mě někam do světa není moc složité. Vlastně je asi složitější mě udržet doma. K Bali mi stačily 2 hodiny s člověkem, který tam byl. Za 4 hodiny nato jsem už měl letenky. Druhé ráno, asi v 5, mi ospalý mozeček říká co to zas bylo za nápad. V 9 je mozeček ready a už se začíná těšit.",
+    "entry": "Docela to trvalo, času je na věci málo, aktivně pracuju ráno, někdy večer, do toho všechny aktivity, jídlo, na tohle se dostane až je čas, víkendy. Dostat mě někam do světa není moc složité. Vlastně je asi složitější mě udržet doma. K Bali mi stačily 2 hodiny s člověkem, který tam byl. Za 4 hodiny nato jsem už měl letenky. Druhé ráno, asi v 5, mi ospalý mozeček říká co to zas bylo za nápad. V 9 je mozeček ready a už se začíná těšit.",
     "second": "Moc jsem to tehdy neřešil, prostě jsem vyhledal letenky, podmínka byla se vyhnout nejistému Taiwanu. Věděl jsem, že Indonésie dělá visa on arrival, co jsem nevěděl bylo, že jsou do 30 dnů zdarma, pokud je člověk nemá v plánu prodloužit. Koupil jsem letenky na 33 dní, což ušetřilo peníze proti 26 dnům, ale přidalo malinkou starost s překročením víza, tak mi v hlavě vzniklo spoustu možných alternativních cest, jak to udělat. Nad tím jsem docela chvíli přemýšlel.",
     "third": "Druhá věc, která mě ani nenapadla promyslet je časový posun. Je tady o 6 hodin navíc. Už jsem poznal, kdy mí přátele v Praze začínají pracovat. Je to okolo 10h, tzn. Tady bude 16h+, takže asi budu muset sem tam rozpůlit práci na ráno, večer.",
     "fourth": "K vízum - bude to delší odstavec s mým rozhodovacím problémem. Jedna možnost byla si sehnat kontakt na Bali a udělat si víza na 60 dní v Praze, to se mi nechtělo. Další možnost byla zůstat 3-5 dní na Filipínách, pak letět na Bali. Tohle mě napadlo docela pozdě, kdy už letenky z Manily do Denpasaru šly nahoru. Třetí možnost, přeplatit dny za překročení délky víza, čtvrtá možnost odletět na pár dní třeba do Singapuru, Malajsie, podívat se tam, vrátit se a nabrat nové vízum. Další možnost, je odletět dřív třeba do Thajska, udělat něco 2-3 týdny tam a koupit letenku domů - tím ale propadne zpáteční na Bali, což maže zase jednosměrná z Thajska (při dalším nápadu dát Asii). Další možnost prodloužit víza o 30 dní za poplatek. Což je asi v pohodě, ale je třeba si to dobře naplánovat - prodloužit levněji sám - jít 3x na místní úřad, nebo s agenturou, dráž, ale rychleji. Pak se rozhodnout jestli letět už domů, nebo nechat letenku propadnout a vybrat pozdější. Tohle všechno je navíc ovlivněno souvisejícími věcmi, naše práce, kterým směrem dát peníze, útrata, únava a tak. Pokud tu někdy někdo poletíte, tak se to asi dá lépe promyslet a vymáčknout z okolních ostrovu maximum.",
@@ -24,13 +24,24 @@
   "Second": "Post 2",
   "Third": "Post 3",
   "India": "Indie",
+  "india": {
+    "entry": "Snad doplním."
+  },
+  "santiago": {
+    "entry": "Snad doplním."
+  },
+  "about": {
+    "entry": "Snad doplním."
+  },
   "Santiago": "Santiago de Compostela",
   "home": {
-    "entry": "Doufám, že jednoho dne bude tento web užitečný.",
-    "no": "Jen výjimečně!"
+    "entry": "Doufám, že jednoho dne bude tento web užitečný. Snažil",
+    "no": "Jen výjimečně!",
+    "about": " Narychlo jsem něco upravil z mého osobního projektu, abych to mohl někam celé zapsat. Hraje to všema barvama. Nemám tady žádná omezení (např. délka textu, ..) a můžu si to napsat jak chci. Věřím, že mě cestování čeká ještě opravdu hodně, tak už je možné dobré to někde hromadit. Paralelně zde navíc občas rozšiřuju svoje věci, takže proč to nespojit. Lehce to trvá, je toho moc. Mnoho zážitků, práce, psaní, aktivit, .."
   },
   "Projects": "Projekty",
   "Lost": "Myslím, že jste se ztratili.",
   "LostDescription": "Vypadá to, že stránka, kterou hledáte neexistuje.",
-  "Go back home": "Zpět na domovskou stránku"
+  "Go back home": "Zpět na domovskou stránku",
+  "written": "Tech Stack"
 }

@@ -15,10 +15,17 @@
   "Third": "Post no.3",
   "home": {
     "entry": "I hope that one day this site will be useful.",
-    "no": "Just occasionally!"
+    "no": "Just occasionally!",
+    "about": "Translated by Google. I quickly edited the skeleton of my personal project so that I could write it all down somewhere. So sorry that it plays with all colors. I have no restrictions here (e.g. text length, ..) and I can write it as I want. I believe that I still have a lot of traveling ahead of me, so it is already possible to accumulate it somewhere. In parallel, I sometimes expand my stuff here, so why not link it. It takes a while, there's a lot. Many experiences, work, writing, activities, .."
   },
   "india": {
     "entry": "hopefully later"
+  },
+  "santiago": {
+    "entry": "hopefully later"
+  },
+  "about": {
+    "entry": "hopefully never"
   },
   "bali": {
     "entry": "I hope that one day this site will be useful.",
@@ -33,10 +40,6 @@
     "nineth": "I'll fill it in if someone asks.",
     "tenth": "I'll fill it in if someone asks."
   },
-  "santiago": {
-    "entry": "hopefully later"
-  },
-  "about": {
-    "entry": "hopefully later"
-  }
+
+  "written": "Tech Stack"
 }

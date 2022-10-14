@@ -17,7 +17,7 @@
     <div class="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8 lg:py-48">
       <p class="text-base font-semibold text-black text-opacity-50">404</p>
       <h1 class="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">{{ $t("Lost") }}</h1>
-      <p class="mt-2 text-lg font-medium text-black text-opacity-50">{{ $t("LostDescription") }}</p>
+      <p class="mt-2 text-base font-medium text-black text-opacity-50">{{ $t("LostDescription") }}</p>
       <div class="mt-6">
         <a
           @click="$router.push('/')"

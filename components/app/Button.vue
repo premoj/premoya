@@ -10,7 +10,7 @@
       { 'min-h-[36px]': !isLarge },
       { 'py-2 px-6 text-baě font-semibold tracking-normal min-h-[40px]': isLarge },
     ]"
-    class="bg-gradient-to-r transition hover:brightness-125 min-w-[125px] inline-flex focus:ring-teal-700 from-cyan-500 via-pink-500 to-orange-200 disabled:opacity-60 disabled:brightness-100 tracking-tight items-center justify-center px-4 py-2 font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2"
+    class="bg-gradient-to-r transition hover:brightness-125 min-w-[125px] inline-flex focus:ring-teal-700 from-teal-500 to-teal-900 disabled:opacity-60 disabled:brightness-100 tracking-tight items-center justify-center px-4 py-2 font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2"
     :disabled="loading"
   >
     <template v-if="!loading">

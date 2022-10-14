@@ -6,15 +6,8 @@ main#appMain {
   @apply relative;
 }
 
-html {
+.scroll {
   scroll-behavior: smooth;
-}
-
-main#appMain:not(.withoutBg)::before {
-  content: "";
-  background: url("assets/bg3.jpg") center center;
-  background-size: cover;
-  @apply fixed top-0 right-0 left-0 bottom-0 opacity-20 -z-10;
 }
 
 .text-justify-center {
@@ -28,34 +21,6 @@ main#appMain:not(.withoutBg)::before {
 
 #__nuxt {
   @apply relative min-h-screen pb-10;
-}
-
-.custom-scrollbar {
-  scrollbar-width: auto;
-  scrollbar-color: #001540 transparent;
-}
-
-/* Chrome, Edge, and Safasi */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.25);
-  border-radius: 10px;
-  border: 0;
-}
-
-@media (min-width: 521px) {
-  .custom-scrollbar-hidden {
-    @apply overflow-hidden;
-    scrollbar-width: 0;
-  }
 }
 
 :root {
@@ -82,12 +47,49 @@ main#appMain:not(.withoutBg)::before {
   --bg-secondary: #eae0c9;
   --border-color: #ded0bf;
 }
+::-webkit-scrollbar {
+  width: 6px;
+  height: 2px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ec4b99;
+  border: 0px none white;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ec4b99;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #ec4b99;
+}
+::-webkit-scrollbar-track {
+  background: white;
+  border: 0px none white;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: white;
+}
+::-webkit-scrollbar-track:active {
+  background: white;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background-color: var(--bg);
-  color: var(--color);
-  transition: background-color 0.3s;
+  OpenSans-VariableFont_wdth,
+  wght @font-face {
+    font-family: "Open Sans";
+    font-weight: 300;
+    font-style: normal;
+    font-display: auto;
+    src: local(""), url("/assets/OpenSans.ttf") format("truetype"), format("ttf");
+  }
 }
 a {
   color: var(--color-primary);

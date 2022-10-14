@@ -2,10 +2,10 @@
   <Listbox as="div" v-model="$i18n.locale">
     <div class="relative mt-1">
       <ListboxButton
-        class="relative w-full cursor-pointer bg-transparent md:bg-none md:bg-white flex rounded-md border-gray-300 bg-white py-2 text-center px-5 sm:text-sm"
+        class="relative w-full cursor-pointer bg-transparent md:bg-none md:bg-transparent flex rounded-md border-gray-300 bg-white py-2 text-center px-5 sm:text-sm"
       >
         <span class="flex items-center">
-          <img :src="getImage($i18n.locale)" alt="" class="h-8 w-8 rounded-full object-cover flex-shrink-0" />
+          <img :src="getImage($i18n.locale)" alt="" class="h-7 w-7 rounded-full object-cover flex-shrink-0" />
         </span>
         <span class="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
           <font-awesome-icon class="text-black" icon="fa-regular fa-chevron-up" />
